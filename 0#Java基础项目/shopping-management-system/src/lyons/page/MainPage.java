@@ -44,7 +44,7 @@ public final class MainPage extends ScannerChoice
 		{
 			String choice = ScannerInfoString();
 			String regex = "[0-3]";//正则表达式
-			if (choice.matches(regex))
+			if (choice.matches(regex)) // 判断输入内容是否符合正则表达式中的模式
 			{
 				int info = Integer.parseInt(choice);
 				switch (info)
@@ -70,7 +70,6 @@ public final class MainPage extends ScannerChoice
 			System.err.println("!输入有误!");
 			System.out.println("重新选择或者按0退出.");
 		} while (true);
-
 	}
 
 	/**
