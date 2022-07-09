@@ -5,23 +5,53 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 /**
- * Á¬½ÓoracleÊı¾İ¿â
+ * è¿æ¥oracleæ•°æ®åº“
  * @author lyons(zhanglei)
+ */
+//public final class DbConn
+//{
+//	public static  Connection getconn()
+//	{
+//		Connection conn = null;
+//
+//		String user   = "scott";
+//		String passwd = "tiger";
+//		String url = "jdbc:oracle:thin:@localhost:1521:orcl";//orclä¸ºoracleæ•°æ®åº“å®ä¾‹åå­—
+//
+//		//å·²åŠ è½½å®Œé©±åŠ¨
+//		try
+//		{
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			conn = DriverManager.getConnection(url,user,passwd);
+//		}catch (SQLException e)
+//		{
+//			e.printStackTrace();
+//		}
+//		catch (ClassNotFoundException e)
+//		{
+//			e.printStackTrace();
+//		}
+//		return conn;
+//	}
+//}
+
+/**
+ * è¿æ¥MySQLæ•°æ®åº“
  */
 public final class DbConn
 {
 	public static  Connection getconn()
 	{
 		Connection conn = null;
-		
-		String user   = "scott";
-		String passwd = "tiger";
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";//orclÎªoracleÊı¾İ¿âÊµÀıÃû×Ö
-		
-		//ÒÑ¼ÓÔØÍêÇı¶¯
+
+		String user   = "root";
+		String passwd = "rootroot";
+		String url = "jdbc:mysql://127.0.0.1:3306/sms_data1";//orclä¸ºoracleæ•°æ®åº“å®ä¾‹åå­—
+
+		//å·²åŠ è½½å®Œé©±åŠ¨
 		try
 		{
-			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url,user,passwd);
 		}catch (SQLException e)
 		{
@@ -33,5 +63,4 @@ public final class DbConn
 		}
 		return conn;
 	}
-
 }

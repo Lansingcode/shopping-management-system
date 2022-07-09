@@ -2,9 +2,9 @@
 
 CREATE TABLE salesman
 (
-       sid        NUMBER(10) PRIMARY KEY,
+       sid        NUMBER(10)   PRIMARY KEY,
        sname      VARCHAR2(10) NOT NULL UNIQUE,
-       spassword  VARCHAR(20) NOT NULL
+       spassword  VARCHAR(20)  NOT NULL
        
 )
 

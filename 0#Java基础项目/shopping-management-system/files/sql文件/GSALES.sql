@@ -5,8 +5,7 @@
 --注意，有外来键
 CREATE TABLE gsales
 (
-       gsid  NUMBER(10) PRIMARY KEY,
-                                          --外键必须是外表主键,
+       gsid  NUMBER(10) PRIMARY KEY, --外键必须是外表主键,
        gid   NUMBER(10) REFERENCES goods(gid)   NOT NULL,
        sid   NUMBER(10) REFERENCES salesman(sid) NOT NULL, 
        sdate DATE DEFAULT SYSDATE NOT NULL, --表内数据改动时自动获取系统时间并同步到数据库

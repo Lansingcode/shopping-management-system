@@ -11,28 +11,28 @@ import lyons.db.DbConn;
 import lyons.entity.Gsales;
 
 /**
- * Êı¾İ¿âgSales±í²Ù×÷
+ * æ•°æ®åº“gSalesè¡¨æ“ä½œ
  * @author lyons(zhanglei)
  */
 public final class GsalesDao
 {
-	
+
 	Connection        conn  = null;
 	PreparedStatement pstmt = null;
 	ResultSet 		  rs    = null;
-	
+
 	/**
-	 * 1.µ±ÌìÂô³öµÄÉÌÆ·
-	 * @return ArrayList<Gsales> ÉÌÆ·ĞÅÏ¢,°üÀ¨ allSum (µ¥ÖÖÉÌÆ·µÄÏúÊÛ×ÜºÍ)
+	 * 1.å½“å¤©å–å‡ºçš„å•†å“
+	 * @return ArrayList<Gsales> å•†å“ä¿¡æ¯,åŒ…æ‹¬ allSum (å•ç§å•†å“çš„é”€å”®æ€»å’Œ)
 	 */
 	public ArrayList<Gsales> dailyGsales()
 	{
-		ArrayList<Gsales> GsalesList = new ArrayList<Gsales>(); 
+		ArrayList<Gsales> GsalesList = new ArrayList<Gsales>();
 		conn = DbConn.getconn();
 
-		//ÊÛÂôÊ±¼ä=µ±Ç°Ê±¼ä trunc(sdate) =trunc(sysdate) µ¥Î»£ºÌì
-		//sqlÓï¾ä½âÊÍ¼ûfiles/sql/java_sql.sql
-		String sql = "select gname,gprice,gnum, allSum from goods, (select gid as salesid,sum(snum) as allSum from gsales where trunc(sdate) =trunc(sysdate) group by gid) where gid = salesid"; 
+		//å”®å–æ—¶é—´=å½“å‰æ—¶é—´ trunc(sdate) =trunc(sysdate) å•ä½ï¼šå¤©
+		//sqlè¯­å¥è§£é‡Šè§files/sql/java_sql.sql
+		String sql = "select gname,gprice,gnum, allSum from goods, (select gid as salesid,sum(snum) as allSum from gsales where trunc(sdate) =trunc(sysdate) group by gid) where gid = salesid";
 		try
 		{
 			pstmt = conn.prepareStatement(sql);
@@ -43,23 +43,23 @@ public final class GsalesDao
 				double gPrice = rs.getDouble(2);
 				int gNum = rs.getInt(3);
 				int allSnum = rs.getInt("allSum");
-				
+
 				Gsales Gsales = new Gsales(gName,gPrice,gNum,allSnum);
-				GsalesList.add(Gsales);						
+				GsalesList.add(Gsales);
 			}
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
 		}finally
-				{
-					DbClose.queryClose(pstmt,rs,conn);
-				}
+		{
+			DbClose.queryClose(pstmt,rs,conn);
+		}
 		return GsalesList;
 	}
-	
+
 	/**
-	 *2.¹ºÎï½áËã-Ïòsales±íÖĞ²åÈëÉÌÆ·Êı¾İ£¡
-	 *@param gSales ÊÛÂôÉÌÆ·¶ÔÏó
+	 *2.è´­ç‰©ç»“ç®—-å‘salesè¡¨ä¸­æ’å…¥å•†å“æ•°æ®ï¼
+	 *@param gSales å”®å–å•†å“å¯¹è±¡
 	 *@return boolean
 	 */
 	public boolean shoppingSettlement(Gsales gSales)
@@ -67,14 +67,14 @@ public final class GsalesDao
 		boolean bool = false;
 		conn = DbConn.getconn();
 		String sql = "INSERT INTO GSALES(GID,SID,SNUM) VALUES(?,?,?)";
-		
+
 		try
 		{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,gSales.getGId());
 			pstmt.setInt(2,gSales.getSId());
 			pstmt.setInt(3,gSales.getSNum());
-			
+
 			int rs = pstmt.executeUpdate();
 			if (rs > 0)
 			{
@@ -89,5 +89,5 @@ public final class GsalesDao
 		}
 		return bool;
 	}
-	
+
 }

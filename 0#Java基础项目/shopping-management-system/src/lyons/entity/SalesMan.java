@@ -1,7 +1,7 @@
 package lyons.entity;
 
 /**
- * SalesMan ÊÛ»õÔ±ÊµÌåÀà
+ * SalesMan å”®è´§å‘˜å®ä½“ç±»
  * @author lyons(zhanglei)
  */
 
@@ -10,9 +10,9 @@ public final class SalesMan
 	private int sId;
 	private String sName;
 	private String sPassWord;
-	
+
 	/**
-	 * ÑéÖ¤ÓÃ»§µÇÂ½
+	 * éªŒè¯ç”¨æˆ·ç™»é™†
 	 * @param sId,spassWord
 	 */
 	public SalesMan(int sId,String spassWord)
@@ -20,9 +20,9 @@ public final class SalesMan
 		this.sId = sId;
 		this.sPassWord = spassWord;
 	}
-	
+
 	/**
-	 * ²éÑ¯ÓÃ»§¡¢¸ü¸ÄÓÃ»§ÃÜÂë
+	 * æŸ¥è¯¢ç”¨æˆ·ã€æ›´æ”¹ç”¨æˆ·å¯†ç 
 	 * @param sId,sName,sPassWord
 	 */
 	public SalesMan(int sId,String sName,String sPassWord)
@@ -31,9 +31,9 @@ public final class SalesMan
 		this.sName = sName;
 		this.sPassWord = sPassWord;
 	}
-	
+
 	/**
-	 * Ìí¼ÓÓÃ»§
+	 * æ·»åŠ ç”¨æˆ·
 	 * @param NsNameame,sPassWord
 	 */
 	public SalesMan(String NsNameame, String sPassWord)
@@ -42,31 +42,31 @@ public final class SalesMan
 		this.sPassWord = sPassWord;
 	}
 
-		
-	//¹²ÓĞget.set·½·¨
-		public int getSId()
-		{
-			return sId;
-		}
-		public void setSId(int id)
-		{
-			sId = id;
-		}
-		public String getSName()
-		{
-			return sName;
-		}
-		public void setSName(String name)
-		{
-			sName = name;
-		}
-		public String getSPassWord()
-		{
-			return sPassWord;
-		}
-		public void setSPassWord(String passWord)
-		{
-			sPassWord = passWord;
-		}
+
+	//å…±æœ‰get.setæ–¹æ³•
+	public int getSId()
+	{
+		return sId;
+	}
+	public void setSId(int id)
+	{
+		sId = id;
+	}
+	public String getSName()
+	{
+		return sName;
+	}
+	public void setSName(String name)
+	{
+		sName = name;
+	}
+	public String getSPassWord()
+	{
+		return sPassWord;
+	}
+	public void setSPassWord(String passWord)
+	{
+		sPassWord = passWord;
+	}
 
 }

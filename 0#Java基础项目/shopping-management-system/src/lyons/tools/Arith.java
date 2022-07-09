@@ -2,104 +2,104 @@ package lyons.tools;
 
 import java.math.BigDecimal;
 
-/**  
- * ÓÉÓÚJavaµÄ¼òµ¥ÀàĞÍ²»ÄÜ¹»¾«È·µÄ¶Ô¸¡µãÊı½øĞĞÔËËã£¬Õâ¸ö¹¤¾ßÀàÌá¹©¾«  
- * È·µÄ¸¡µãÊıÔËËã£¬°üÀ¨¼Ó¼õ³Ë³ıºÍËÄÉáÎåÈë.
- * 
- * ×¢Òâ£º´Ë´úÂë½«¼Ó¼õ³Ë³ıËÄÉáÎåÈë·½·¨ÒÑÊµÏÖ£¬µ«±¾ÏîÄ¿ÖĞ²¢Î´È«²¿Ê¹ÓÃ.
+/**
+ * ç”±äºJavaçš„ç®€å•ç±»å‹ä¸èƒ½å¤Ÿç²¾ç¡®çš„å¯¹æµ®ç‚¹æ•°è¿›è¡Œè¿ç®—ï¼Œè¿™ä¸ªå·¥å…·ç±»æä¾›ç²¾
+ * ç¡®çš„æµ®ç‚¹æ•°è¿ç®—ï¼ŒåŒ…æ‹¬åŠ å‡ä¹˜é™¤å’Œå››èˆäº”å…¥.
+ *
+ * æ³¨æ„ï¼šæ­¤ä»£ç å°†åŠ å‡ä¹˜é™¤å››èˆäº”å…¥æ–¹æ³•å·²å®ç°ï¼Œä½†æœ¬é¡¹ç›®ä¸­å¹¶æœªå…¨éƒ¨ä½¿ç”¨.
  * @author lyons(zhanglei)
- */  
+ */
 
 public class Arith
 {
-	private static final int DEF_DIV_SCALE = 2; //Ä¬ÈÏ³ı·¨ÔËËã¾«¶È
-	private Arith(){} 
-	
-	/**  
-	* Ìá¹©¾«È·µÄ¼Ó·¨ÔËËã¡£  
-	* @param v1 ±»¼ÓÊı  
-	* @param v2 ¼ÓÊı  
-	* @return Á½¸ö²ÎÊıµÄºÍ  
-	*/  
+	private static final int DEF_DIV_SCALE = 2; //é»˜è®¤é™¤æ³•è¿ç®—ç²¾åº¦
+	private Arith(){}
+
+	/**
+	 * æä¾›ç²¾ç¡®çš„åŠ æ³•è¿ç®—ã€‚
+	 * @param v1 è¢«åŠ æ•°
+	 * @param v2 åŠ æ•°
+	 * @return ä¸¤ä¸ªå‚æ•°çš„å’Œ
+	 */
 	public static double add(double v1,double v2)
-	{   
-		BigDecimal b1 = new BigDecimal(Double.toString(v1));   
-		BigDecimal b2 = new BigDecimal(Double.toString(v2));   
-		return b1.add(b2).doubleValue();   
-	} 
-	
-	/**  
-	* Ìá¹©¾«È·µÄ¼õ·¨ÔËËã¡£  
-	* @param v1 ±»¼õÊı  
-	* @param v2 ¼õÊı  
-	* @return Á½¸ö²ÎÊıµÄ²î  
-	*/  
+	{
+		BigDecimal b1 = new BigDecimal(Double.toString(v1));
+		BigDecimal b2 = new BigDecimal(Double.toString(v2));
+		return b1.add(b2).doubleValue();
+	}
+
+	/**
+	 * æä¾›ç²¾ç¡®çš„å‡æ³•è¿ç®—ã€‚
+	 * @param v1 è¢«å‡æ•°
+	 * @param v2 å‡æ•°
+	 * @return ä¸¤ä¸ªå‚æ•°çš„å·®
+	 */
 	public static double sub(double v1,double v2)
-	{   
-		BigDecimal b1 = new BigDecimal(Double.toString(v1));   
-		BigDecimal b2 = new BigDecimal(Double.toString(v2));   
-		return b1.subtract(b2).doubleValue();   
-	}   
-	
-	/**  
-	* Ìá¹©¾«È·µÄ³Ë·¨ÔËËã¡£  
-	* @param v1 ±»³ËÊı  
-	* @param v2 ³ËÊı  
-	* @return Á½¸ö²ÎÊıµÄ»ı  
-	*/  
+	{
+		BigDecimal b1 = new BigDecimal(Double.toString(v1));
+		BigDecimal b2 = new BigDecimal(Double.toString(v2));
+		return b1.subtract(b2).doubleValue();
+	}
+
+	/**
+	 * æä¾›ç²¾ç¡®çš„ä¹˜æ³•è¿ç®—ã€‚
+	 * @param v1 è¢«ä¹˜æ•°
+	 * @param v2 ä¹˜æ•°
+	 * @return ä¸¤ä¸ªå‚æ•°çš„ç§¯
+	 */
 	public static double mul(double v1,double v2)
-	{   
-		BigDecimal b1 = new BigDecimal(Double.toString(v1));   
-		BigDecimal b2 = new BigDecimal(Double.toString(v2));   
-		return b1.multiply(b2).doubleValue();   
-	}   
-	
-	/**  
-	* Ìá¹©£¨Ïà¶Ô£©¾«È·µÄ³ı·¨ÔËËã£¬µ±·¢Éú³ı²»¾¡µÄÇé¿öÊ±£¬¾«È·µ½  
-	* Ğ¡ÊıµãÒÔºó2Î»£¬ÒÔºóµÄÊı×ÖËÄÉáÎåÈë¡£  
-	* @param v1 ±»³ıÊı  
-	* @param v2 ³ıÊı  
-	* @return Á½¸ö²ÎÊıµÄÉÌ  
-	*/  
+	{
+		BigDecimal b1 = new BigDecimal(Double.toString(v1));
+		BigDecimal b2 = new BigDecimal(Double.toString(v2));
+		return b1.multiply(b2).doubleValue();
+	}
+
+	/**
+	 * æä¾›ï¼ˆç›¸å¯¹ï¼‰ç²¾ç¡®çš„é™¤æ³•è¿ç®—ï¼Œå½“å‘ç”Ÿé™¤ä¸å°½çš„æƒ…å†µæ—¶ï¼Œç²¾ç¡®åˆ°
+	 * å°æ•°ç‚¹ä»¥å2ä½ï¼Œä»¥åçš„æ•°å­—å››èˆäº”å…¥ã€‚
+	 * @param v1 è¢«é™¤æ•°
+	 * @param v2 é™¤æ•°
+	 * @return ä¸¤ä¸ªå‚æ•°çš„å•†
+	 */
 	public static double div(double v1,double v2)
-	{   
-		return div(v1,v2,DEF_DIV_SCALE);   
-	}   
-	
-	/**  
-	* Ìá¹©£¨Ïà¶Ô£©¾«È·µÄ³ı·¨ÔËËã¡£µ±·¢Éú³ı²»¾¡µÄÇé¿öÊ±£¬ÓÉscale²ÎÊıÖ¸  
-	* ¶¨¾«¶È£¬ÒÔºóµÄÊı×ÖËÄÉáÎåÈë¡£  
-	* @param v1 ±»³ıÊı  
-	* @param v2 ³ıÊı  
-	* @param scale ±íÊ¾±íÊ¾ĞèÒª¾«È·µ½Ğ¡ÊıµãÒÔºó¼¸Î»¡£  
-	* @return Á½¸ö²ÎÊıµÄÉÌ  
-	*/  
+	{
+		return div(v1,v2,DEF_DIV_SCALE);
+	}
+
+	/**
+	 * æä¾›ï¼ˆç›¸å¯¹ï¼‰ç²¾ç¡®çš„é™¤æ³•è¿ç®—ã€‚å½“å‘ç”Ÿé™¤ä¸å°½çš„æƒ…å†µæ—¶ï¼Œç”±scaleå‚æ•°æŒ‡
+	 * å®šç²¾åº¦ï¼Œä»¥åçš„æ•°å­—å››èˆäº”å…¥ã€‚
+	 * @param v1 è¢«é™¤æ•°
+	 * @param v2 é™¤æ•°
+	 * @param scale è¡¨ç¤ºè¡¨ç¤ºéœ€è¦ç²¾ç¡®åˆ°å°æ•°ç‚¹ä»¥åå‡ ä½ã€‚
+	 * @return ä¸¤ä¸ªå‚æ•°çš„å•†
+	 */
 	public static double div(double v1,double v2,int scale)
-	{   
+	{
 		if(scale<0)
-		{   
-			throw new IllegalArgumentException(   
-			"The scale must be a positive integer or zero");   
-		}   
-		BigDecimal b1 = new BigDecimal(Double.toString(v1));   
-		BigDecimal b2 = new BigDecimal(Double.toString(v2));   
-		return b1.divide(b2,scale,BigDecimal.ROUND_HALF_UP).doubleValue(); //BigDecimal.ROUND_HALF_UP Ïò¡°×î½Ó½üµÄ¡±Êı×ÖÉáÈë£¬Èç¹ûÓëÁ½¸öÏàÁÚÊı×ÖµÄ¾àÀëÏàµÈ£¬ÔòÎªÏòÉÏÉáÈëµÄÉáÈëÄ£Ê½¡£ 
-	}   
-	
-	/**  
-	* Ìá¹©¾«È·µÄĞ¡ÊıÎ»ËÄÉáÎåÈë´¦Àí¡£  
-	* @param v ĞèÒªËÄÉáÎåÈëµÄÊı×Ö  
-	* @param scale Ğ¡Êıµãºó±£Áô¼¸Î»  
-	* @return ËÄÉáÎåÈëºóµÄ½á¹û  
-	*/  
+		{
+			throw new IllegalArgumentException(
+					"The scale must be a positive integer or zero");
+		}
+		BigDecimal b1 = new BigDecimal(Double.toString(v1));
+		BigDecimal b2 = new BigDecimal(Double.toString(v2));
+		return b1.divide(b2,scale,BigDecimal.ROUND_HALF_UP).doubleValue(); //BigDecimal.ROUND_HALF_UP å‘â€œæœ€æ¥è¿‘çš„â€æ•°å­—èˆå…¥ï¼Œå¦‚æœä¸ä¸¤ä¸ªç›¸é‚»æ•°å­—çš„è·ç¦»ç›¸ç­‰ï¼Œåˆ™ä¸ºå‘ä¸Šèˆå…¥çš„èˆå…¥æ¨¡å¼ã€‚
+	}
+
+	/**
+	 * æä¾›ç²¾ç¡®çš„å°æ•°ä½å››èˆäº”å…¥å¤„ç†ã€‚
+	 * @param v éœ€è¦å››èˆäº”å…¥çš„æ•°å­—
+	 * @param scale å°æ•°ç‚¹åä¿ç•™å‡ ä½
+	 * @return å››èˆäº”å…¥åçš„ç»“æœ
+	 */
 	public static double round(double v,int scale)
-	{   
+	{
 		if(scale<0)
-		{   
-			throw new IllegalArgumentException("The scale must be a positive integer or zero");   
-		}   
-		BigDecimal b = new BigDecimal(Double.toString(v));   
-		BigDecimal one = new BigDecimal("1");   
-		return b.divide(one,scale,BigDecimal.ROUND_HALF_UP).doubleValue();   
-	}   
+		{
+			throw new IllegalArgumentException("The scale must be a positive integer or zero");
+		}
+		BigDecimal b = new BigDecimal(Double.toString(v));
+		BigDecimal one = new BigDecimal("1");
+		return b.divide(one,scale,BigDecimal.ROUND_HALF_UP).doubleValue();
+	}
 }

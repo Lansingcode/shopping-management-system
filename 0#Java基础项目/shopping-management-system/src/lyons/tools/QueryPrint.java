@@ -13,171 +13,171 @@ import lyons.entity.Goods;
 import lyons.entity.SalesMan;
 
 /**
- * ²éÑ¯&&´òÓ¡ º¯Êı¹¤¾ß(ºóÆÚÓÅ»¯¿ÉÄÜ»áÉ¾)
+ * æŸ¥è¯¢&&æ‰“å° å‡½æ•°å·¥å…·(åæœŸä¼˜åŒ–å¯èƒ½ä¼šåˆ )
  *@author lyons(zhanglei)
  */
 
 public final class QueryPrint
 {
-		Connection        conn  = null;
-		PreparedStatement pstmt = null;
-		ResultSet 		rs 	 	 = null;
-	
-	/**
-	 * Ä£ºı²éÑ¯²¢³ÂÁĞ²éÑ¯ĞÅÏ¢º¯ÊıĞ¡¹¤¾ß
-	 * @param oper µ÷ÓÃÕß
-	 * @return ²éÑ¯µ½µÄĞÅÏ¢µÄgid,Èç¹û·µ»ØÖµµÈÓÚ-1£¬Ôò´ú±í²éÑ¯Òì³£¡£	  
-	 */
-		public static int query(String oper)
-		{
-			int gid = -1;
-			String shopping = ScannerChoice.ScannerInfoString(); //¼üÅÌ»ñÈ¡ÉÌÆ·Ãû×Ö
-			ArrayList<Goods> goodsList = new QueryPrint().queryGoodsKey(-1,shopping);  //¸ù¾İ¼üÅÌ»ñÈ¡µÄÉÌÆ·Ãû×ÖÕ{ÓÃ ¾«È·²éÑ¯º¯Êı£¬´_¶¨ÓÃ‘ôËùÒª²Ù×÷µÄÊı¾İ
-			    if (goodsList == null || goodsList.size() <= 0)
-				{
-						System.err.println("\t£¡£¡²éÎŞ´ËÉÌÆ· £¡£¡");
-						
-						//Õ{ÓÃÑ¡ÔñÏÂÒ»²½º¯Êı
-						ScannerChoice.changedInfoNext(oper);
-						
-				}else	//²éµ½ÓĞ´ËÉÌÆ·£¬ÊµÏÖ½øĞĞ ¸ü¸ÄÉÌÆ· ĞÅÏ¢²Ù×÷£¡
-					{		
-						Goods goods = goodsList.get(0);
-						
-						System.out.println("\t\t\t\t\tÉÌÆ·ÁĞ±í\n\n");
-						System.out.println("\tÉÌÆ·±àºÅ\t\tÉÌÆ·Ãû³Æ\t\tÉÌÆ·¼Û¸ñ\t\tÉÌÆ·ÊıÁ¿\t\t±¸×¢\n");
-						System.out.print("\t"+goods.getGid()+"\t\t"+goods.getGname()+"\t\t"+goods.getGprice()+"\t\t"+goods.getGnum());
-						if (goods.getGnum()==0)
-						{
-							System.out.println("\t\t¸ÃÉÌÆ·ÒÑÊÛ¿Õ");
-						}else if (goods.getGnum()<10)
-								{
-									System.out.println("\t\t¸ÃÉÌÆ·ÒÑ²»×ã10¼ş");
-								}else 
-									{
-										System.out.println("\t\t-");
-									}
-						gid = goods.getGid(); //½«ÉÌÆ·±àºÅ·µ»Ø¸øµ÷ÓÃÕß
-					}
-		 return gid;
-		} 
-	
-	/**
-	 * Ä£ºı²éÑ¯º¯ÊıĞ¡¹¤¾ß
-	 * @return int µ±ÉÌÆ·¼şÊıÓĞÇÒÖ»ÓĞÒ»¼şÊ±·µ»ØÉÌÆ·gidºÅ£¬ÉÌÆ·ÒÑÊÛ¿ÕÊ±·µ»Ø -1. >1¼şÊ±·µ»Ø-2 . ²éÎŞ´ËÉÌÆ·Ê±·µ»Ø-3
-	 * 					  
-	 */
-		public static int querySettlement() 
-		{
-			int gid = -1;
-			ArrayList<Goods> goodsSettlement = new GoodsDao().queryGoods(3);//Õ{ÓÃ ¹Ø¼ü×Ö²éÑ¯º¯Êı
-		    if (goodsSettlement == null || goodsSettlement.size() <= 0)
-			{
-					System.err.println("\t£¡£¡²éÎŞ´ËÉÌÆ· £¡£¡\n");
-					gid = -3;	
-			}else	//²éµ½ÓĞ´ËÉÌÆ·£¬ÊµÏÖ½øĞĞ ¸ü¸ÄÉÌÆ· ĞÅÏ¢²Ù×÷£¡
-				{	
-					System.out.println("\t\t\t\t\tÉÌÆ·ÁĞ±í\n\n");
-					System.out.println("\tÉÌÆ·±àºÅ\t\tÉÌÆ·Ãû³Æ\t\tÉÌÆ·¼Û¸ñ\t\tÉÌÆ·ÊıÁ¿\t\t±¸×¢\n");
-					for (int i = 0; i < goodsSettlement.size(); i++)
-					{
-						Goods goods = goodsSettlement.get(i);
-						if (goods.getGnum() > 0)
-						{
-							System.out.print("\t"+goods.getGid()+"\t\t"+goods.getGname()+"\t\t"+goods.getGprice()+"\t\t"+goods.getGnum());
-								
-							if (goods.getGnum()==0)
-							{
-								System.out.println("\t\t¸ÃÉÌÆ·ÒÑÊÛ¿Õ");
-							}else if (goods.getGnum()<10)
-									{
-										System.out.println("\t\t¸ÃÉÌÆ·ÒÑ²»×ã10¼ş");
-									}else 
-										{
-											System.out.println("\t\t-");
-										}
-								if (goodsSettlement.size()==1)
-								{
-									gid = goods.getGid(); //½«ÉÌÆ·±àºÅ·µ»Ø¸øµ÷ÓÃÕß
-								}else 
-									{
-										gid = -2;
-									}
-						}
-					}
-				}
-		 return gid; 
-		} 
-	
+	Connection        conn  = null;
+	PreparedStatement pstmt = null;
+	ResultSet 		rs 	 	 = null;
 
 	/**
-	 * ¸ù¾İÉÌÆ· gid or gName²éÑ¯ÉÌÆ·
-	 * @param ÉÌÆ·id,ÉÌÆ·Ãû³Æ
-	 * @return ÉÌÆ·ĞÅÏ¢
+	 * æ¨¡ç³ŠæŸ¥è¯¢å¹¶é™ˆåˆ—æŸ¥è¯¢ä¿¡æ¯å‡½æ•°å°å·¥å…·
+	 * @param oper è°ƒç”¨è€…
+	 * @return æŸ¥è¯¢åˆ°çš„ä¿¡æ¯çš„gid,å¦‚æœè¿”å›å€¼ç­‰äº-1ï¼Œåˆ™ä»£è¡¨æŸ¥è¯¢å¼‚å¸¸ã€‚
 	 */
-		public ArrayList<Goods> queryGoodsKey(int gId,String gName) 
-		{										
-			ArrayList<Goods> goodsList = new ArrayList<Goods>();
-			conn = DbConn.getconn();	
-			
-			String sql = "SELECT * FROM GOODS WHERE GID=? OR GNAME=?"; 
-			   try
-			   {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, gId);
-					pstmt.setString(2, gName);
-					rs = pstmt.executeQuery();
-					while (rs.next())
-					{
-						int gid = rs.getInt("gid");
-						String gname = rs.getString(2);
-						double gprice = rs.getDouble(3);
-						int gnum = rs.getInt(4);
-						
-						Goods goods = new Goods(gid,gname,gprice,gnum);
-						goodsList.add(goods);
-					}
-				} catch (SQLException e)
-				{
-					e.printStackTrace();
-				}finally
-						{
-							DbClose.queryClose(pstmt, rs, conn);
-						}
-		  return goodsList;
-		}	
-		
+	public static int query(String oper)
+	{
+		int gid = -1;
+		String shopping = ScannerChoice.ScannerInfoString(); //é”®ç›˜è·å–å•†å“åå­—
+		ArrayList<Goods> goodsList = new QueryPrint().queryGoodsKey(-1,shopping);  //æ ¹æ®é”®ç›˜è·å–çš„å•†å“åå­—èª¿ç”¨ ç²¾ç¡®æŸ¥è¯¢å‡½æ•°ï¼Œç¢ºå®šç”¨æˆ¶æ‰€è¦æ“ä½œçš„æ•°æ®
+		if (goodsList == null || goodsList.size() <= 0)
+		{
+			System.err.println("\tï¼ï¼æŸ¥æ— æ­¤å•†å“ ï¼ï¼");
+
+			//èª¿ç”¨é€‰æ‹©ä¸‹ä¸€æ­¥å‡½æ•°
+			ScannerChoice.changedInfoNext(oper);
+
+		}else	//æŸ¥åˆ°æœ‰æ­¤å•†å“ï¼Œå®ç°è¿›è¡Œ æ›´æ”¹å•†å“ ä¿¡æ¯æ“ä½œï¼
+		{
+			Goods goods = goodsList.get(0);
+
+			System.out.println("\t\t\t\t\tå•†å“åˆ—è¡¨\n\n");
+			System.out.println("\tå•†å“ç¼–å·\t\tå•†å“åç§°\t\tå•†å“ä»·æ ¼\t\tå•†å“æ•°é‡\t\tå¤‡æ³¨\n");
+			System.out.print("\t"+goods.getGid()+"\t\t"+goods.getGname()+"\t\t"+goods.getGprice()+"\t\t"+goods.getGnum());
+			if (goods.getGnum()==0)
+			{
+				System.out.println("\t\tè¯¥å•†å“å·²å”®ç©º");
+			}else if (goods.getGnum()<10)
+			{
+				System.out.println("\t\tè¯¥å•†å“å·²ä¸è¶³10ä»¶");
+			}else
+			{
+				System.out.println("\t\t-");
+			}
+			gid = goods.getGid(); //å°†å•†å“ç¼–å·è¿”å›ç»™è°ƒç”¨è€…
+		}
+		return gid;
+	}
+
 	/**
-	 * ¾«È·²éÑ¯ÊÛ»õÔ±ĞÅÏ¢
-	 * @param ÊÛ»õÔ±Ãû×Ö
-	 * @return 
+	 * æ¨¡ç³ŠæŸ¥è¯¢å‡½æ•°å°å·¥å…·
+	 * @return int å½“å•†å“ä»¶æ•°æœ‰ä¸”åªæœ‰ä¸€ä»¶æ—¶è¿”å›å•†å“gidå·ï¼Œå•†å“å·²å”®ç©ºæ—¶è¿”å› -1. >1ä»¶æ—¶è¿”å›-2 . æŸ¥æ— æ­¤å•†å“æ—¶è¿”å›-3
+	 *
+	 */
+	public static int querySettlement()
+	{
+		int gid = -1;
+		ArrayList<Goods> goodsSettlement = new GoodsDao().queryGoods(3);//èª¿ç”¨ å…³é”®å­—æŸ¥è¯¢å‡½æ•°
+		if (goodsSettlement == null || goodsSettlement.size() <= 0)
+		{
+			System.err.println("\tï¼ï¼æŸ¥æ— æ­¤å•†å“ ï¼ï¼\n");
+			gid = -3;
+		}else	//æŸ¥åˆ°æœ‰æ­¤å•†å“ï¼Œå®ç°è¿›è¡Œ æ›´æ”¹å•†å“ ä¿¡æ¯æ“ä½œï¼
+		{
+			System.out.println("\t\t\t\t\tå•†å“åˆ—è¡¨\n\n");
+			System.out.println("\tå•†å“ç¼–å·\t\tå•†å“åç§°\t\tå•†å“ä»·æ ¼\t\tå•†å“æ•°é‡\t\tå¤‡æ³¨\n");
+			for (int i = 0; i < goodsSettlement.size(); i++)
+			{
+				Goods goods = goodsSettlement.get(i);
+				if (goods.getGnum() > 0)
+				{
+					System.out.print("\t"+goods.getGid()+"\t\t"+goods.getGname()+"\t\t"+goods.getGprice()+"\t\t"+goods.getGnum());
+
+					if (goods.getGnum()==0)
+					{
+						System.out.println("\t\tè¯¥å•†å“å·²å”®ç©º");
+					}else if (goods.getGnum()<10)
+					{
+						System.out.println("\t\tè¯¥å•†å“å·²ä¸è¶³10ä»¶");
+					}else
+					{
+						System.out.println("\t\t-");
+					}
+					if (goodsSettlement.size()==1)
+					{
+						gid = goods.getGid(); //å°†å•†å“ç¼–å·è¿”å›ç»™è°ƒç”¨è€…
+					}else
+					{
+						gid = -2;
+					}
+				}
+			}
+		}
+		return gid;
+	}
+
+
+	/**
+	 * æ ¹æ®å•†å“ gid or gNameæŸ¥è¯¢å•†å“
+	 * @param å•†å“id,å•†å“åç§°
+	 * @return å•†å“ä¿¡æ¯
+	 */
+	public ArrayList<Goods> queryGoodsKey(int gId,String gName)
+	{
+		ArrayList<Goods> goodsList = new ArrayList<Goods>();
+		conn = DbConn.getconn();
+
+		String sql = "SELECT * FROM GOODS WHERE GID=? OR GNAME=?";
+		try
+		{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gId);
+			pstmt.setString(2, gName);
+			rs = pstmt.executeQuery();
+			while (rs.next())
+			{
+				int gid = rs.getInt("gid");
+				String gname = rs.getString(2);
+				double gprice = rs.getDouble(3);
+				int gnum = rs.getInt(4);
+
+				Goods goods = new Goods(gid,gname,gprice,gnum);
+				goodsList.add(goods);
+			}
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}finally
+		{
+			DbClose.queryClose(pstmt, rs, conn);
+		}
+		return goodsList;
+	}
+
+	/**
+	 * ç²¾ç¡®æŸ¥è¯¢å”®è´§å‘˜ä¿¡æ¯
+	 * @param å”®è´§å‘˜åå­—
+	 * @return
 	 */
 	public ArrayList<SalesMan> querySalesMan(String sName)
 	{
 		ArrayList<SalesMan> SalesManList = new ArrayList<SalesMan>();
-		conn = DbConn.getconn();	
+		conn = DbConn.getconn();
 		String sql = "SELECT * FROM SALESMAN WHERE SNAME=?";
-		   try
-		   {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, sName);
-				rs = pstmt.executeQuery();
-				while (rs.next())
-				{
-					int sid = rs.getInt("sid");
-					String sname = rs.getString(2);
-					String sPassWord = rs.getString(3);
-					
-					SalesMan salesMan = new SalesMan(sid,sname,sPassWord);
-					SalesManList.add(salesMan);
-				}
-			} catch (SQLException e)
+		try
+		{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sName);
+			rs = pstmt.executeQuery();
+			while (rs.next())
 			{
-				e.printStackTrace();
-			}finally
-					{
-						DbClose.queryClose(pstmt, rs, conn);
-					}
+				int sid = rs.getInt("sid");
+				String sname = rs.getString(2);
+				String sPassWord = rs.getString(3);
+
+				SalesMan salesMan = new SalesMan(sid,sname,sPassWord);
+				SalesManList.add(salesMan);
+			}
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}finally
+		{
+			DbClose.queryClose(pstmt, rs, conn);
+		}
 		return SalesManList;
 	}
 }

@@ -59,7 +59,7 @@ public class GoodsDao extends HttpServlet
 		String value = "";
 		value = request.getParameter("key");
 		int key = Integer.parseInt(value);
-		System.out.println("¼ì²âÊÇ·ñÓÐkey:"+key);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½key:"+key);
 		
 		String keyWord = "";
 		keyWord = request.getParameter("keyWord");
@@ -73,11 +73,11 @@ public class GoodsDao extends HttpServlet
 	}
 	
 	/**
-	 * ÉÌÆ·²éÑ¯
+	 * ï¿½ï¿½Æ·ï¿½ï¿½Ñ¯
 	 * @param request
 	 * @param response
-	 * @param key ²éÑ¯µÄÌõ¼þ/int:4(¼òµ¥²éÑ¯)
-	 * @return ÉÌÆ·ÐÅÏ¢Êý×é
+	 * @param key ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/int:4(ï¿½òµ¥²ï¿½Ñ¯)
+	 * @return ï¿½ï¿½Æ·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	 * @throws ServletException
 	 * @throws IOException
 	 */
@@ -86,7 +86,7 @@ public class GoodsDao extends HttpServlet
 	{
 	    response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        CachedRowSetImpl rowSet = null;//ÐÐ¼¯¶ÔÏó
+        CachedRowSetImpl rowSet = null;//ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -114,15 +114,15 @@ public class GoodsDao extends HttpServlet
 //		    orderForm = new OrderForm();
 //		    session.setAttribute("orderForm", orderForm);
 //		}
-		  //ÅÐ¶ÏÓÃ»§ÊÇ·ñµÇÂ½
+		  //ï¿½Ð¶ï¿½ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½Â½
 		  String user = "";
-          user = username.getUsername();//µÇÂ½ÕßµÄÓÃ»§Ãû
-          System.out.println("ÎÒÊÇÓÃ»§£º"+user);
+          user = username.getUsername();//ï¿½ï¿½Â½ï¿½ßµï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+          System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½"+user);
           if (user.equals("userNull"))
           {
               out.print("<br>");
-              out.print("<center><font color=#008B8B> µÇÂ½Ö®ºó²ÅÄÜ¿´¶©µ¥Å¶  </font>");
-              out.print("<a href=/lyons.eaby/jsp/join/login.jsp><font color=red size=6>µÇÂ½</font></a></center>");
+              out.print("<center><font color=#008B8B> ï¿½ï¿½Â½Ö®ï¿½ï¿½ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ï¿½ï¿½Å¶  </font>");
+              out.print("<a href=/lyons.eaby/jsp/join/login.jsp><font color=red size=6>ï¿½ï¿½Â½</font></a></center>");
               return;
           }
 		
@@ -131,7 +131,7 @@ public class GoodsDao extends HttpServlet
 		switch (key)
 		{
 			case 1:
-					/*//	key=1ÉÌÆ· ÊýÁ¿ ÉýÐò²éÑ¯
+					/*//	key=1ï¿½ï¿½Æ· ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 					String sqlGnum = "SELECT * FROM GOODS ORDER BY GNUM ASC";
 					try
 					{
@@ -150,7 +150,7 @@ public class GoodsDao extends HttpServlet
 							}*/
 				break;
 			case 2:
-        			  //key=2 °´ÕÕ¹Ø¼ü×Ö²éÑ¯ ÉÌÆ·ÐÅÏ¢
+        			  //key=2 ï¿½ï¿½ï¿½Õ¹Ø¼ï¿½ï¿½Ö²ï¿½Ñ¯ ï¿½ï¿½Æ·ï¿½ï¿½Ï¢
                       
                         String sqlShowGoodsByKey =  
                         "select * from commodity WHERE commodity_name LIKE '%'||?||'%'";
@@ -159,34 +159,34 @@ public class GoodsDao extends HttpServlet
                             pstmt = conn.prepareStatement(sqlShowGoodsByKey);
                             pstmt.setString(1, keyWord);
                             rs = pstmt.executeQuery();
-                            System.out.println("--2²é¿´¶©µ¥Ö´ÐÐÊý¾Ý¿â²Ù×÷--");
+                            System.out.println("--2ï¿½é¿´ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½--");
                             if(rs.next())
                             {
-                                rs = pstmt.executeQuery();//ÖØÐÂ²éÑ¯µÄÔ­ÒòÊÇrs.nextÊ±¹â±êÆ«ÒÆºó£¬¶ªµô¼ÇÂ¼¡£
+                                rs = pstmt.executeQuery();//ï¿½ï¿½ï¿½Â²ï¿½Ñ¯ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½rs.nextÊ±ï¿½ï¿½ï¿½Æ«ï¿½Æºó£¬¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
                                 rowSet = new CachedRowSetImpl();
                                 rowSet.populate(rs); 
                                 goods.setRowSet(rowSet);
-                                System.out.println("2ÒÑ¾­´ÓÊý¾Ý¿âÖÐ»ñÈ¡µ½Öµ£¬²¢Èû½øÐÐ¼¯");
+                                System.out.println("2ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½");
                                 request.getRequestDispatcher("/jsp/browse/showGoods.jsp").forward(request, response);
                             }else 
                                 {
                                     out.print("<br><br><br><center>");
-                                    out.print("<font color=green> Ç×,²éÑ¯³ö´íÀ².¸ü»»¹Ø¼ü×ÖÔÙ´Î </font>");
-                                    out.print("<a href=/lyons.eaby/jsp/browse/searchByKeyWord.jsp><font color=red size=6>²éÑ¯</font></a>");
+                                    out.print("<font color=green> ï¿½ï¿½,ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ </font>");
+                                    out.print("<a href=/lyons.eaby/jsp/browse/searchByKeyWord.jsp><font color=red size=6>ï¿½ï¿½Ñ¯</font></a>");
                                     out.print("</center>");     
                                 }
                         } catch (SQLException e)
                         {
-                            System.out.println("key=3²é¿´¶©µ¥Òì³££º"+e);
+                            System.out.println("key=3ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½"+e);
                             
                         }finally
                                 {
-                                    System.out.println("²é¿´¶©µ¥Ö´ÐÐ¹Ø±ÕÁ÷");
+                                    System.out.println("ï¿½é¿´ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð¹Ø±ï¿½ï¿½ï¿½");
                                     DbClose.allClose(pstmt, rs, conn);
                                 }
         				break;
 			case 3:
-                    //key=3 °´ÕÕµÇÂ¼ÈË²éÑ¯¶©µ¥ ÉÌÆ·Ãû×Ö+ÊýÁ¿
+                    //key=3 ï¿½ï¿½ï¿½Õµï¿½Â¼ï¿½Ë²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½
 			      
                     String sqlOrder= 
                     "select commodity_name,sum(sum) from orderform where username=? group by commodity_name having sum(sum)>0";
@@ -195,55 +195,55 @@ public class GoodsDao extends HttpServlet
                         pstmt = conn.prepareStatement(sqlOrder);
                         pstmt.setString(1, user);
                         rs = pstmt.executeQuery();
-                        System.out.println("--²é¿´¶©µ¥Ö´ÐÐÊý¾Ý¿â²Ù×÷--");
+                        System.out.println("--ï¿½é¿´ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½--");
                         if(rs.next())
                         {
-                            rs = pstmt.executeQuery();//ÖØÐÂ²éÑ¯µÄÔ­ÒòÊÇrs.nextÊ±¹â±êÆ«ÒÆºó£¬¶ªµô¼ÇÂ¼¡£
+                            rs = pstmt.executeQuery();//ï¿½ï¿½ï¿½Â²ï¿½Ñ¯ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½rs.nextÊ±ï¿½ï¿½ï¿½Æ«ï¿½Æºó£¬¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
                             rowSet = new CachedRowSetImpl();
                             rowSet.populate(rs); 
                             goods.setRowSet(rowSet);
-                            System.out.println("3ÒÑ¾­´ÓÊý¾Ý¿âÖÐ»ñÈ¡µ½Öµ£¬²¢Èû½øÐÐ¼¯");
+                            System.out.println("3ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½");
                             request.getRequestDispatcher("/jsp/order/lookOrderForm.jsp").forward(request, response);
                         }else 
                             {
                                 out.print("<br><br><br><center>");
-                                out.print("<font color=green> Ç×,¶©µ¥ÊÇ¿ÕµÄÄØ </font>");
+                                out.print("<font color=green> ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿Õµï¿½ï¿½ï¿½ </font>");
                                 out.print("<a href=/lyons.eaby/lyons.dao/GoodsDao?key=4><font color=red size=6>Go Shopping</font></a>");
                                 out.print("</center>");		
                             }
                     } catch (SQLException e)
                     {
-                        System.out.println("key=3²é¿´¶©µ¥Òì³££º"+e);
+                        System.out.println("key=3ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½"+e);
                         
                     }finally
                             {
-                                System.out.println("²é¿´¶©µ¥Ö´ÐÐ¹Ø±ÕÁ÷");
+                                System.out.println("ï¿½é¿´ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð¹Ø±ï¿½ï¿½ï¿½");
                                 DbClose.allClose(pstmt, rs, conn);
                             }
                     break;
 			case 4:
 			        StringBuffer url = request.getRequestURL();
 			        System.out.println("4324234=========="+url.toString());
-					//key=4 ä¯ÀÀÉÌÆ·
+					//key=4 ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
 					String sqlList= "select * from commodity";
 					try
 					{
 						pstmt = conn.prepareStatement(sqlList);
 						rs = pstmt.executeQuery();
-						System.out.println("--4ä¯ÀÀÉÌÆ·Ö´ÐÐÊý¾Ý¿â²Ù×÷--");
+						System.out.println("--4ï¿½ï¿½ï¿½ï¿½ï¿½Æ·Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½--");
 						if(rs.next())
 						{
-						    rs = pstmt.executeQuery();//ÖØÐÂ²éÑ¯µÄÔ­ÒòÊÇrs.nextÊ±¹â±êÆ«ÒÆºó£¬¶ªµô¼ÇÂ¼¡£
+						    rs = pstmt.executeQuery();//ï¿½ï¿½ï¿½Â²ï¿½Ñ¯ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½rs.nextÊ±ï¿½ï¿½ï¿½Æ«ï¿½Æºó£¬¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
 							rowSet = new CachedRowSetImpl();
 							rowSet.populate(rs);
 							goods.setRowSet(rowSet);
-							System.out.println("4ä¯ÀÀÉÌÆ·ÒÑ¾­´ÓÊý¾Ý¿âÖÐ»ñÈ¡µ½Öµ£¬²¢Èû½øÐÐ¼¯");
+							System.out.println("4ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½");
 							request.getRequestDispatcher("/jsp/browse/showGoods.jsp").forward(request, response);
 						}else 
                         {
                                 out.print("<br><br><br><center>");
-                                out.print("<font color=green> Ç×,Âô¼Ò»¹Ã»ÉÏ»õÄØ </font>");
-                                out.print("<a href=/lyons.eaby/lyons.dao/GoodsDao?key=4><font color=red size=6>½øÈëÊ×Ò³</font></a>");
+                                out.print("<font color=green> ï¿½ï¿½,ï¿½ï¿½ï¿½Ò»ï¿½Ã»ï¿½Ï»ï¿½ï¿½ï¿½ </font>");
+                                out.print("<a href=/lyons.eaby/lyons.dao/GoodsDao?key=4><font color=red size=6>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³</font></a>");
                                 out.print("</center>");     
                             }
 					} catch (SQLException e)
