@@ -62,6 +62,5 @@ public final class DbConn
 			e.printStackTrace();
 		}
 		return conn;
-
 	}
 }
