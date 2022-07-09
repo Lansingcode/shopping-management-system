@@ -144,14 +144,14 @@ public final class MainPage extends ScannerChoice
 				switch (info)
 				{
 					case 0:
-						mianPage();
+						mianPage();//返回主页
 						break;
 					case 1:
 						int loginTimes = 3;//3次登陆机会
 
 						while (loginTimes!=0)
 						{
-							loginTimes--;
+							loginTimes--;//剩余登陆次数减一
 							System.out.println("---用户名---");
 							String sName = ScannerInfoString();
 							System.out.println("---密码---");
