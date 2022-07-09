@@ -20,7 +20,6 @@ import lyons.tools.ScannerChoice;
 
 public final class MainPage extends ScannerChoice
 {
-
 	/**
 	 * 入口函数
 	 */
