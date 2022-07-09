@@ -100,7 +100,7 @@ public final class MainPage extends ScannerChoice
 						mianPage();
 						break;
 					case 1:
-						GoodsPage.addGoodsPage();
+						GoodsPage.addGoodsPage(); // addGoodsPage为静态方法，不需要实例化类
 						break;
 					case 2:
 						GoodsPage.upateGoodsPage();

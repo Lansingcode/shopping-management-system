@@ -37,7 +37,7 @@ public final class SalesManPage extends ScannerChoice
 		{
 			System.out.println("添加售货员失败");
 		}
-		choiceSalesManNext("addSalesMan");
+		choiceSalesManNext("addSalesMan");// 添加完成一个售货员以后继续添加
 	}
 
 	/**
