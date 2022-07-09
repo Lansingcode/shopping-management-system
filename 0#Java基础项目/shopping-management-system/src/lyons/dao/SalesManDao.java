@@ -21,7 +21,7 @@ public final class SalesManDao
 	ResultSet 		rs 	 	 = null;
 
 	/**
-	 * 1.前台收银登陆
+	 * 1.前台收银登陆 根据用户输入的用户名查询用户密码
 	 * @param sName 用户名
 	 * @return ArrayList<SalesMan> sPassWord,sId
 	 */
