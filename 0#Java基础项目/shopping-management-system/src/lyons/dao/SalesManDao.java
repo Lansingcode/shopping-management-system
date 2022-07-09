@@ -27,7 +27,7 @@ public final class SalesManDao
 	 */
 	public ArrayList<SalesMan> checkstandLog(String sName)
 	{
-		ArrayList<SalesMan> salesManInfo = new ArrayList<SalesMan>();
+		ArrayList<SalesMan> salesManInfo = new ArrayList<SalesMan>();// 新建一个ArrayList用于存放从数据库中取出的SalesMan实例
 		conn = DbConn.getconn();
 		String sql = "SELECT SID,SPASSWORD FROM SALESMAN WHERE SNAME=?";
 		try
@@ -40,8 +40,8 @@ public final class SalesManDao
 			{
 				String sPassWord = rs.getString("spassword");
 				int sId = rs.getInt("sId");
-				SalesMan salesMan = new SalesMan(sId,sPassWord);
-				salesManInfo.add(salesMan);
+				SalesMan salesMan = new SalesMan(sId,sPassWord);//将从数据库中取出的数据放入SalesMan类中，产生一个实例
+				salesManInfo.add(salesMan);//将实例放到ArrayList中
 			}
 		} catch (SQLException e1)
 		{
@@ -50,7 +50,7 @@ public final class SalesManDao
 		{
 			DbClose.queryClose(pstmt, rs, conn);
 		}
-		return salesManInfo;
+		return salesManInfo;//返回ArrayList类型数据
 	}
 
 	/**

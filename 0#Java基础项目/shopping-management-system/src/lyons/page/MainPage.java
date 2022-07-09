@@ -157,9 +157,9 @@ public final class MainPage extends ScannerChoice
 							System.out.println("---密码---");
 							String sPssWord = ScannerInfoString();
 
-							ArrayList<SalesMan> salesManInfo = new SalesManDao().checkstandLog(sName); //以用户名从数据库中获取用户密码.
+							ArrayList<SalesMan> salesManInfo = new SalesManDao().checkstandLog(sName); //以用户输入的用户名为参数从数据库中获取用户id和密码，用ArrayList类型参数接收函数返回值，这里调用函数使用了简便方法，没有将实例赋值给一个变量，相当于自动生成一个临时变量，在临时变量之上再调用函数
 
-							if (salesManInfo == null || salesManInfo.size() == 0)//没有此用户的情况！
+							if (salesManInfo == null || salesManInfo.size() == 0) //当返回值为空时，说明没有此用户的信息
 							{
 								System.err.println("\t!!用户名输入有误!!\n");
 								System.out.println("\n剩余登陆次数："+loginTimes);
