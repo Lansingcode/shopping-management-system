@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 public class HandleExit extends HttpServlet 
 {
- /**
+ 	/**
      * serialVersionUID
      */
     private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class HandleExit extends HttpServlet
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		HttpSession session = request.getSession(true);//true一定要写。否则，获取不到当前session时会自动创建一个
+		HttpSession session = request.getSession(true);//true????д???????????????session?????????????
 		session.invalidate();
 		response.sendRedirect("/lyons.eaby/jsp/join/login.jsp");
 		
