@@ -7,7 +7,7 @@ import lyons.page.MainPage;
 import lyons.page.SalesManPage;
 
 /**
- * 1.各種完成操作后的 选择下一步
+ * 1.各种完成操作后的 选择下一步
  * 2.界面选择操作
  * @author lyons(zhanglei)
  */
@@ -26,7 +26,7 @@ public class ScannerChoice
 			System.out.print("保留小数点后两位,请输入：");
 			String info = sc.next();
 
-			String regex = "(([1-9][0-9]*)\\.([0-9]{2}))|[0]\\.([0-9]{2})";//保留小数点后2位小数
+			String regex = "(([1-9][0-9]*)\\.([0-9]{2}))|[0]\\.([0-9]{2})";//保留小数点后2位小数，正则表达式匹配  大于1的数和小于1的数，都保留两位小数
 			if (info.matches(regex))
 			{
 				num = Double.parseDouble(info);

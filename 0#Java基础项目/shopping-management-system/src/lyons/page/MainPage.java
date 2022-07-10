@@ -42,7 +42,7 @@ public final class MainPage extends ScannerChoice
 		System.out.println("\n请输入选项,或者按0退出.");
 		do
 		{
-			String choice = ScannerInfoString();
+			String choice = ScannerInfoString();// 直接调用父类中的static方法，不需要类名
 			String regex = "[0-3]";//正则表达式
 			if (choice.matches(regex)) // 判断输入内容是否符合正则表达式中的模式
 			{
