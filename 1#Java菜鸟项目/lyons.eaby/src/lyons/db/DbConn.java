@@ -1,6 +1,6 @@
 package lyons.db;
 /**
- * �������ݿ�
+ * ?????????
  * @author Lyons
  */
 import java.sql.Connection;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 //		String passwd	= "tiger";
 //		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 //
-//		//�Ѽ�������
+//		//?????????
 //			try
 //			{
 //				Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -41,7 +41,7 @@ import java.sql.SQLException;
  */
 public final class DbConn
 {
-	public static  Connection getConn()
+	public static Connection getConn()
 	{
 		Connection conn = null;
 
