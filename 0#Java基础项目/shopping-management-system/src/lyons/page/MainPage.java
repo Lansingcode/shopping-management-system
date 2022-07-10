@@ -25,13 +25,13 @@ public final class MainPage extends ScannerChoice
 	 */
 	public static void main(String[] args)
 	{
-		MainPage.mianPage();
+		MainPage.mainPage();
 	}
 
 	/**
 	 * 主界面 已实现！已校验！
 	 */
-	public static void  mianPage()
+	public static void mainPage()
 	{
 		System.out.println("***************************\n");
 		System.out.println("\t 1.商品维护\n");
@@ -97,7 +97,7 @@ public final class MainPage extends ScannerChoice
 				switch (info)
 				{
 					case 0:
-						mianPage();
+						mainPage();
 						break;
 					case 1:
 						GoodsPage.addGoodsPage(); // addGoodsPage为静态方法，不需要实例化类
@@ -144,7 +144,7 @@ public final class MainPage extends ScannerChoice
 				switch (info)
 				{
 					case 0:
-						mianPage();//返回主页
+						mainPage();//返回主页
 						break;
 					case 1:
 						int loginTimes = 3;//3次登陆机会
@@ -218,7 +218,7 @@ public final class MainPage extends ScannerChoice
 				switch (info)
 				{
 					case 0:
-						mianPage();
+						mainPage();
 						break;
 					case 1:
 						salesManManagementPage();
