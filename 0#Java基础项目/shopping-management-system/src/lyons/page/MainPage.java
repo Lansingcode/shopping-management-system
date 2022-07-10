@@ -13,7 +13,7 @@ import lyons.tools.QueryPrint;
 import lyons.tools.ScannerChoice;
 
 /**
- * 商超购物管理系统主界面
+ * 商超购物管理系统主界面（此处继承ScannerChoice类，因此可以在MainPage中直接使用ScannerInfoString方法）
  * @author 张磊
  * @version 1.0
  */
@@ -42,7 +42,7 @@ public final class MainPage extends ScannerChoice
 		System.out.println("\n请输入选项,或者按0退出.");
 		do
 		{
-			String choice = ScannerChoice.ScannerInfoString();
+			String choice = ScannerInfoString();
 			String regex = "[0-3]";//正则表达式
 			if (choice.matches(regex)) // 判断输入内容是否符合正则表达式中的模式
 			{
@@ -89,7 +89,7 @@ public final class MainPage extends ScannerChoice
 		System.out.println("\n请输入选项,或者按 0 返回上一级菜单.");
 		do
 		{
-			String choice = ScannerChoice.ScannerInfoString();
+			String choice = ScannerInfoString();
 			String regex = "[0-5]";
 			if (choice.matches(regex))
 			{
@@ -136,7 +136,7 @@ public final class MainPage extends ScannerChoice
 
 		do
 		{
-			String choice = ScannerChoice.ScannerInfoString();
+			String choice = ScannerInfoString();
 			String regex = "[0-2]";
 			if (choice.matches(regex))
 			{
@@ -153,9 +153,9 @@ public final class MainPage extends ScannerChoice
 						{
 							loginTimes--;//剩余登陆次数减一
 							System.out.println("---用户名---");
-							String sName = ScannerChoice.ScannerInfoString();
+							String sName = ScannerInfoString();
 							System.out.println("---密码---");
-							String sPssWord = ScannerChoice.ScannerInfoString();
+							String sPssWord = ScannerInfoString();
 
 							ArrayList<SalesMan> salesManInfo = new SalesManDao().checkstandLog(sName); //以用户输入的用户名为参数从数据库中获取用户id和密码，用ArrayList类型参数接收函数返回值，这里调用函数使用了简便方法，没有将实例赋值给一个变量，相当于自动生成一个临时变量，在临时变量之上再调用函数
 
@@ -210,7 +210,7 @@ public final class MainPage extends ScannerChoice
 		System.out.println("\n请输入选项,或者按 0 返回上一级菜单.");
 		do
 		{
-			String choice = ScannerChoice.ScannerInfoString();
+			String choice = ScannerInfoString();
 			String regex  = "[0-2]";
 			if (choice.matches(regex))
 			{
@@ -244,7 +244,7 @@ public final class MainPage extends ScannerChoice
 		do
 		{
 			System.out.println("按 S 开始购物结算.按 0 返回账户登录界面");
-			String choNext = ScannerChoice.ScannerInfoString();
+			String choNext = ScannerInfoString();
 			if ("0".equals(choNext))
 			{
 				checkstandLogPage();
@@ -291,7 +291,7 @@ public final class MainPage extends ScannerChoice
 									do
 									{
 										System.out.println("确认购买：Y/N");
-										String choShopping = ScannerChoice.ScannerInfoString();
+										String choShopping = ScannerInfoString();
 										if ("y".equals(choShopping) || "Y".equals(choShopping))
 										{
 											System.out.println("\n总价："+allPrice+" $");
@@ -368,7 +368,7 @@ public final class MainPage extends ScannerChoice
 		System.out.println("\n请输入选项,或者按 0 返回上一级菜单.");
 		do
 		{
-			String choice = ScannerChoice.ScannerInfoString();
+			String choice = ScannerInfoString();
 			String regex  = "[0-5]";
 			if (choice.matches(regex))
 			{
