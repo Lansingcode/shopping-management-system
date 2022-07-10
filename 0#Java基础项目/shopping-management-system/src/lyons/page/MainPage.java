@@ -77,7 +77,6 @@ public final class MainPage extends ScannerChoice
 	 */
 	public static void MaintenancePage()
 	{
-
 		System.out.println("***************************\n");
 		System.out.println("\t 1.添加商品\n");
 		System.out.println("\t 2.更改商品\n");
@@ -306,10 +305,10 @@ public final class MainPage extends ScannerChoice
 													System.out.println("\n请重新输入缴纳金额($)");
 												}else{
 
-											/*	这里是购物结算操作数据库
-															1.更改goods表数量
-		  													2.增加sales表数量
-											原商品数量gNum。 结算员Id  salesManSid */
+													/*	这里是购物结算操作数据库
+																	1.更改goods表数量
+																	2.增加sales表数量
+													原商品数量gNum。 结算员Id  salesManSid */
 
 													//对sales表操作
 													Gsales gSales = new Gsales(goods.getGid(),salesManSid,choicegoodsNum);
@@ -356,7 +355,6 @@ public final class MainPage extends ScannerChoice
 	 */
 	public static void salesManManagementPage()
 	{
-
 		System.out.println("***************************\n");
 		System.out.println("\t 1.添加售货员\n");
 		System.out.println("\t 2.更改售货员\n");
